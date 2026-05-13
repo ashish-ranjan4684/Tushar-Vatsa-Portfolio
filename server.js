@@ -142,7 +142,7 @@ app.get("/talk",async(req,res)=>{
 wss.on("connection",async(ws,req)=>{
     console.log("A client connected");
     
-    await redisClient.set(); 
+    //await redisClient.set(); 
     ws.send(`hello from server!`); 
     ws.on("message",(message)=>{
         console.log(`Received message: ${message}`);
