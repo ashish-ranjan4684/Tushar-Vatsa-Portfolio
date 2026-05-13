@@ -4,6 +4,28 @@
     box-sizing:border-box
 }
 
+@view-transition{
+    navigation:auto
+}
+
+::view-transition-old(root){
+    animation: view-transition-old 0.5s ease;
+}
+::view-transition-new(root){
+    animation: view-transition-new 0.5s ease;
+}
+
+@keyframes view-transition-old {
+    to{
+        transform:translateX(-100%);
+    }
+}
+@keyframes view-transition-new {
+    from{
+        transform:translateX(100%);
+    }
+}
+
 @font-face {
     font-family: "Roboto";
     src: url(Roboto-Regular.ttf);
@@ -170,6 +192,25 @@ body{
 /* Mobile Layout */
 @media (max-width: 900px){
 
+    ::view-transition-old(root){
+    animation: view-transition-old 0.5s ease;
+}
+::view-transition-new(root){
+    animation: view-transition-new 0.5s ease;
+}
+
+@keyframes view-transition-old {
+    to{
+        transform:translateY(-100%);
+    }
+}
+@keyframes view-transition-new {
+    from{
+        transform:translateY(100%);
+    }
+}
+    
+    
     .navbar{
         flex-direction: row;
         justify-content: space-between;
@@ -326,7 +367,7 @@ body{
     .about{
         font-size: 5rem;
         font-weight: 1000;
-        background-image: radial-gradient(#696fb5,black);;
+        background-image: radial-gradient(#696fb5,black);
     }
 
     .about-line1-name{

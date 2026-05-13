@@ -2,10 +2,16 @@ let domains = ["Full Stack Developer.","AI Engineer."];
 let about_domain = document.getElementById("about-line2");
 let resume_btn = document.getElementById("resume-btn");
 let hamburger = document.getElementById("hamburger");
+let talkEl = document.querySelector(".talk");
 let menu = document.getElementById("menu");
 
 hamburger.addEventListener("click",()=>{
     menu.classList.toggle("active");
+});
+
+talkEl.addEventListener("click",async()=>{
+    window.location.href="/talk";
+
 });
 async function typeWriter(){
     let i = 0;
