@@ -34,7 +34,7 @@
 
     <div class="message-box">
         <div id="message-input" contenteditable="true" role="textarea"></div>
-        <button class="message-send-btn" type="button" id="message-send-btn"><img src="../assets/icons/send32.png" alt="send button"></button>
+        <button class="message-send-btn" type="button" id="message-send-btn"><img src="send32.png" alt="send button"></button>
     </div>
 
     <script type="module">
@@ -57,6 +57,7 @@
         console.log("hello");
         message_send_btn.addEventListener("click",async()=>{
             let message = message_input_el.innerText;
+            if(!message.trim()) return;
             let sendBox = document.createElement("div");
             sendBox.classList.add("send-box");
             sendBox.innerText = message;

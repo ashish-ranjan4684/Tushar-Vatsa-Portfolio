@@ -294,5 +294,132 @@ body{
                 aquamarine
             ) border-box;
     
+    }
+
+    @media (max-width: 900px){
+
+    /* View transition (your code retained) */
+    ::view-transition-old(root){
+        animation: view-transition-old 0.5s ease;
+    }
+    ::view-transition-new(root){
+        animation: view-transition-new 0.5s ease;
+    }
+
+    @keyframes view-transition-old {
+        to{ transform:translateY(-100%); }
+    }
+    @keyframes view-transition-new {
+        from{ transform:translateY(100%); }
+    }
+
+    /* NAVBAR */
+    .navbar{
+        padding: 0.8rem 1rem;
+    }
+
+    .title{
+        font-size: 2rem;
+    }
+
+    .hamburger{
+        display:block;
+    }
+
+    .menu{
+        position: absolute;
+        top:100%;
+        left:0;
+        width:100%;
+        background: inherit;
+
+        flex-direction: column;
+        align-items: center;
+
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+
+        transition: all 0.4s ease;
+    }
+
+    .menu.active{
+        max-height: 400px;
+        opacity: 1;
+        padding:1rem 0;
+    }
+
+    .menuitem{
+        width:100%;
+        padding:1rem;
+        font-size:1rem;
+    }
+
+    /* CHAT BODY */
+    .main-body{
+        padding: 0.8rem;
+        gap:0.7rem;
+    }
+
+    .send-box,
+    .receive-box{
+        max-width: 75%;   /* more width for mobile */
+        font-size: 0.95rem;
+    }
+
+    /* INPUT AREA */
+    .message-box{
+        gap:0.5rem;
+        padding: 0 0.5rem;
+    }
+
+    #message-input{
+        width: 75%;
+        font-size: 0.95rem;
+        padding: 0.8rem;
+    }
+
+    .message-send-btn{
+        width: 20%;
+        height: 2.8rem;
+    }
 }
+
+@media (max-width: 450px){
+
+    .title{
+        font-size: 1.5rem;
+    }
+
+    .menuitem{
+        font-size: 0.9rem;
+        padding: 0.8rem;
+    }
+
+    .main-body{
+        padding: 0.5rem;
+    }
+
+    .send-box,
+    .receive-box{
+        max-width: 85%;
+        font-size: 0.85rem;
+        padding: 0.4rem 0.7rem;
+    }
+
+    .message-time{
+        font-size: 0.6rem;
+    }
+
+    #message-input{
+        font-size: 0.85rem;
+        padding: 0.6rem;
+        min-height: 2.5rem;
+    }
+
+    .message-send-btn{
+        height: 2.5rem;
+    }
+}
+
 }
