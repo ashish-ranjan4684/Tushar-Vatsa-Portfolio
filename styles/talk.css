@@ -36,7 +36,7 @@
 
 body{
     width:100vw;
-    height:100vh;
+    height:100dvh;
     background-image: radial-gradient(#696fb5,black);
     display:flex;
     flex-direction: column;
@@ -165,6 +165,7 @@ body{
     width:15%;
     max-width: 5rem;
     height:3rem;
+    padding:1rem;
     background:
             linear-gradient(
                 var(--angle),
@@ -419,6 +420,7 @@ body{
 
     .message-send-btn{
         height: 2.5rem;
+        padding:0.6rem;
     }
 }
 
