@@ -183,8 +183,8 @@ body{
     display:flex;
     justify-content: center;
     align-items: center;
-    justify-self: flex-end;
-    align-self: flex-end;
+    /*justify-self: flex-end;
+    align-self: flex-end;*/
     transition:transform 0.3s ease;
 }
 
@@ -430,7 +430,7 @@ body{
     .send-box,
     .receive-box{
         max-width: 85%;
-        font-size: 0.85rem;
+        /*font-size: 0.85rem;*/
         padding: 0.4rem 0.7rem;
     }
 
@@ -439,14 +439,14 @@ body{
     }
 
     #message-input{
-        font-size: 0.85rem;
+        /*font-size: 0.85rem;
         padding: 0.6rem;
-        min-height: 2.5rem;
+        min-height: 2.5rem;*/
     }
 
     .message-send-btn{
-        height: 2.5rem;
-        padding:0.6rem;
+        /*height: 2.5rem;
+        padding:0.6rem;*/
     }
 }
 
