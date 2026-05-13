@@ -68,6 +68,10 @@
             mainBody.appendChild(sendBox);
             message_input_el.innerText = "";
             message_input_el.focus();
+            mainBody.scrollTo({
+                top:mainBody.scrollHeight,
+                behaviour:smooth
+            })
 
         });
 
