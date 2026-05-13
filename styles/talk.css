@@ -296,6 +296,30 @@ body{
             ) border-box;
     
     }
+    .title{
+        background-image: linear-gradient(
+            var(--angle),
+            aqua,
+            rgb(201, 87, 21)
+        );
+        color:transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        animation-name:title-animation;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+    }
+
+    @keyframes title-animation {
+        0% {
+            --angle: 0deg;
+        }
+        100% {
+            --angle: 360deg;
+        }
+    }
 
     @media (max-width: 900px){
 
@@ -377,12 +401,14 @@ body{
     #message-input{
         width: 75%;
         font-size: 0.95rem;
+        min-height: 2.8rem;
         padding: 0.8rem;
     }
 
     .message-send-btn{
         width: 20%;
         height: 2.8rem;
+        padding:0.8rem;
     }
 }
 

@@ -154,7 +154,7 @@ body{
 .about{
     display:flex;
     flex-direction:column;
-    height:100vh;
+    height:100dvh;
     justify-content: center;
     align-items:center;
     width:100%;
@@ -267,7 +267,7 @@ body{
     }
 
     .about{
-        min-height:100vh;
+        min-height:100dvh;
         padding:2rem 1rem;
     }
 
@@ -325,6 +325,30 @@ body{
     body{
         background:black;
         color:white;
+    }
+    .title{
+        background-image: linear-gradient(
+            var(--angle),
+            aqua,
+            rgb(201, 87, 21)
+        );
+        color:transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        animation-name:title-animation;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+    }
+
+    @keyframes title-animation {
+        0% {
+            --angle: 0deg;
+        }
+        100% {
+            --angle: 360deg;
+        }
     }
 
     .navbar{
