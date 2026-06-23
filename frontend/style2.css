@@ -1,0 +1,443 @@
+/* --- Base Reset & Variables --- */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color-scheme: dark;
+}
+
+@property --angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url(Roboto-Regular.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url(Roboto-Bold.ttf);
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url(Roboto-ExtraBold.ttf);
+    font-weight: 1000;
+}
+
+/* --- Global Layout --- */
+body {
+    background-color: #000000;
+    color: white;
+    position: relative;
+    font-family: "Roboto", sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevents any accidental horizontal scrolling */
+}
+
+/* --- View Transitions --- */
+@view-transition {
+    navigation: auto;
+}
+
+::view-transition-old(root) {
+    animation: view-transition-old 0.5s ease;
+}
+::view-transition-new(root) {
+    animation: view-transition-new 0.5s ease;
+}
+
+@keyframes view-transition-old {
+    to { transform: translateX(-100%); }
+}
+@keyframes view-transition-new {
+    from { transform: translateX(100%); }
+}
+
+/* --- Navbar Layout --- */
+.navbar {
+    width: 100%;
+    padding: 1rem 2rem;
+    position: absolute;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #000000;
+    border-bottom: 1px solid rgb(50, 49, 49);
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(var(--angle), aqua, rgb(201, 87, 21));
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: title-animation 5s linear infinite;
+}
+
+@keyframes title-animation {
+    0% { --angle: 0deg; }
+    100% { --angle: 360deg; }
+}
+
+.title-logo {
+    height: 3rem;
+    margin-right: 0.5rem;
+}
+
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.menuitem {
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background 0.3s ease;
+}
+
+.menuitem:hover {
+    background: linear-gradient(to right, rgb(118, 116, 116), rgb(91, 85, 85));
+    cursor: pointer;
+}
+
+.talk {
+    --angle: 90deg;
+    background: linear-gradient(var(--angle), aqua, aquamarine);
+    color: #000; /* Visible contrast over light background */
+    transition: --angle 0.5s;
+}
+
+.talk:hover {
+    --angle: 270deg;
+}
+
+/* --- Hero / About Section --- */
+.about {
+    /*border:2px solid red;*/
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    background-image: radial-gradient(#696fb5, black);
+    padding: 6rem 2rem 2rem 2rem; /* Added top padding to prevent layout overlapping navbar */
+}
+
+.about-super-container {
+    width: 100%;
+    /*max-width: 1200px;*/
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    /*border:2px solid red;*/
+}
+
+.hero-image-container {
+    width: 400px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*border:2px solid red;*/
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    object-fit: cover;
+    transform: translateY(-50px);
+    /*border:2px solid red;*/
+}
+
+.about-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-line1 {
+    font-size: 4rem;
+    font-weight: 1000;
+    line-height: 1.2;
+}
+
+.about-line1-name {
+    color: transparent;
+    background-image: linear-gradient(to right, aqua, aquamarine);
+    -webkit-background-clip: text;
+    background-clip: text;   
+}
+
+.about-line2 {
+    font-size: 3rem;
+    font-weight: 1000;
+    line-height: 1.2;
+    color: transparent;
+    background-image: linear-gradient(to right, rgb(220, 133, 20), rgb(201, 87, 21));
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.about-line3 {
+    font-size: 1.3rem;
+    width:60%;
+    margin-top: 1rem;
+    color: rgb(163, 163, 163);
+    font-weight: 300;
+    text-align: justify;
+    line-height: 1.6;
+}
+
+/* --- Buttons & Socials --- */
+.buttons-container,
+.socials-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* Wraps items cleanly on medium viewports */
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.button {
+    cursor: pointer;
+    user-select: none;
+    padding: 0.5rem 1.5rem;
+    height: 3rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    background-color: #000000;
+    border: 1px solid rgb(50, 49, 49);
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    transition: background 0.3s;
+}
+
+.button:hover {
+    background: linear-gradient(to right, rgb(118, 116, 116), rgb(91, 85, 85));
+}
+
+.socials {
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+    padding: 0;
+}
+
+/* --- Scroll Indicator --- */
+.down-arrow {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #696fb5;
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.down-arrow:hover {
+    cursor: pointer;
+    animation-play-state: paused;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-20%); }   
+}
+
+/* --- Footer --- */
+.footer {
+    width: 100%;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #2e2d2d;
+    border-top: 1px solid rgb(50, 49, 49);
+}
+
+.footer-line1 {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.footer-line2 {
+    font-size: 0.8rem;
+    color: rgb(178, 176, 176);
+}
+
+
+/* ==========================================================================
+   MEDIA QUERIES (Mobile and Tablets Scaling Optimization)
+   ========================================================================== */
+
+@media (max-width: 900px) {
+    /* Vertical Transition Tweaks */
+    @keyframes view-transition-old { to { transform: translateY(-100%); } }
+    @keyframes view-transition-new { from { transform: translateY(100%); } }
+
+    .navbar {
+        padding: 1rem;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    /* Collapsible Navigation Mobile Menu Drawer */
+    .menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #000000;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 0.4s ease, opacity 0.3s ease;
+        box-shadow: 0px 10px 15px rgba(0,0,0,0.5);
+    }
+
+    .menu.active {
+        max-height: 450px;
+        opacity: 1;
+        padding: 1rem 0;
+    }
+
+    .menuitem {
+        width: 100%;
+        text-align: center;
+        padding: 1.2rem;
+        border-radius: 0;
+        font-size: 1.1rem;
+        border-bottom: 1px solid #1a1a1a;
+    }
+
+    /* Main Responsive Section Flip */
+    .about {
+        padding-top: 6rem;
+    }
+
+    .about-super-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 2.5rem;
+    }
+
+    .hero-image-container {
+        width: 100%; /* Resetting fixed 500px width */
+        /*mask-image: linear-gradient(to top, transparent, black );*/
+    }
+
+    .hero-image {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%; 
+        transform: translateY(0px);/* Clean circular avatar fallback on mobile layout */
+        /*border: 3px solid #696fb5;*/
+    }
+
+    .about-container {
+        width: 100%;
+        align-items: center;
+    }
+
+    .about-line1 {
+        font-size: 2.4rem;
+    }
+
+    .about-line2 {
+        font-size: 2rem;
+    }
+
+    .about-line3 {
+        font-size: 1.1rem;
+        width: 100%; /* Spans gracefully over smaller screen borders */
+        text-align: center;
+    }
+
+    .buttons-container,
+    .socials-container {
+        width: 100%;
+        justify-content: center;
+        gap: 1rem;
+    }
+}
+
+/* Optimization for tiny displays (e.g. iPhone SE / smaller mobile) */
+@media (max-width: 500px) {
+    .title {
+        font-size: 1.5rem;
+    }
+    .hero-image{
+        transform: translateY(0px);
+    }
+    .about-line1 {
+        font-size: 1.5rem;
+    }
+    .about-line2 {
+        font-size: 1.3rem;
+    }
+    .buttons-container {
+        flex-direction: column;
+        width: 100%;
+    }
+    .button {
+        width: 100%;
+    }
+    .socials{
+        height:2rem;
+        width:2rem;
+
+    }
+}

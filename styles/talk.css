@@ -94,6 +94,13 @@ body{
     flex-shrink: 1;
     flex-grow:1;
     overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: aquamarine transparent;
+    scroll-snap-type: proximity;
+    scroll-behavior: smooth;
+    scroll-padding: 0;
+    scrollbar-arrow-color: transparent;
+    
 }
 
 .message-box{

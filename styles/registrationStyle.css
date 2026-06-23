@@ -114,14 +114,18 @@ body{
 
     .title{
         --angle:90deg;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
         background-image: linear-gradient(
             var(--angle),
             aqua,
             rgb(201, 87, 21)
         );
         color:transparent;
-        background-clip: text;
         -webkit-background-clip: text;
+        background-clip: text;
         animation-name:title-animation;
         animation-duration: 5s;
         animation-iteration-count: infinite;
