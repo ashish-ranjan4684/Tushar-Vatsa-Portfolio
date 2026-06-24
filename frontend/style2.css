@@ -82,14 +82,15 @@ body {
 /* --- Navbar Layout --- */
 .navbar {
     width: 100%;
-    padding: 1rem 2rem;
+    padding: 0.5rem 2rem;
     position: absolute;
     top: 0;
     z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #000000;
+    background: #0000007d;
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid rgb(50, 49, 49);
 }
 
@@ -669,6 +670,11 @@ Certification card starts
     word-break: break-all; /* Gracefully breaks long hashes if viewed on small layouts */
 }
 
+.validation-info a{
+    text-decoration: none;;
+    color:inherit;
+}
+
 .validation-id {
     color: #8c97a3; /* Distinct subtle coloration for hash string */
 }
@@ -687,6 +693,9 @@ Certification card starts
     background-color: #00cc66; /* Vibrant status green */
     border-radius: 50%;
     display: inline-block;
+    animation: blink 1s ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 .status-text {
@@ -718,7 +727,7 @@ Certification card ends
     @keyframes view-transition-new { from { transform: translateY(100%); } }
 
     .navbar {
-        padding: 1rem;
+        padding: 0.25rem 1rem;
     }
 
     .title {
@@ -735,7 +744,8 @@ Certification card ends
         top: 100%;
         left: 0;
         width: 100%;
-        background: #000000;
+        background: #00000021;
+        backdrop-filter: blur(20px);
         flex-direction: column;
         align-items: center;
         gap: 0;
@@ -754,11 +764,18 @@ Certification card ends
 
     .menuitem {
         width: 100%;
-        text-align: center;
-        padding: 1.2rem;
+        text-align: left;
+        padding: 1rem;
         border-radius: 0;
+        color:#c6c2c2;
         font-size: 1.1rem;
+        font-weight:300;
         border-bottom: 1px solid #1a1a1a;
+    }
+    .menuitem:hover{
+        background-color: #0000003f;
+        background-image:none;
+        backdrop-filter:blur(10px);
     }
 
     /* Main Responsive Section Flip */
@@ -770,7 +787,7 @@ Certification card ends
         flex-direction: column;
         text-align: center;
         height:100%;
-        gap: 2.5rem;
+        gap: 1rem;
     }
 
     .hero-image-container {
@@ -825,6 +842,12 @@ Certification card ends
 
 /* Optimization for tiny displays (e.g. iPhone SE / smaller mobile) */
 @media (max-width: 500px) {
+    .down-arrow{
+        display:none;
+    }
+    .carousel{
+        mask-image: linear-gradient(to right, transparent 5%, black 12%, black 88%, transparent 95%);
+    }
     .title {
         font-size: 1.5rem;
     }
