@@ -72,11 +72,11 @@ document.addEventListener("DOMContentLoaded", () => {
             hamburger.classList.toggle("active");
 
             // Dynamically alter character view states between hamburger and close sign
-            if (hamburger.classList.contains("active")) {
+            /*if (hamburger.classList.contains("active")) {
                 hamburger.innerHTML = "&#10005;"; // Unicode code for "✕" (Close cross)
             } else {
                 hamburger.innerHTML = "&#9776;";  // Unicode code for "☰" (Hamburger lines)
-            }
+            }*/
         });
 
         // Optional convenience feature: close the overlay menu layout when any link item gets tapped
@@ -85,8 +85,18 @@ document.addEventListener("DOMContentLoaded", () => {
             item.addEventListener("click", () => {
                 menu.classList.remove("active");
                 hamburger.classList.remove("active");
-                hamburger.innerHTML = "&#9776;";
+                /*hamburger.innerHTML = "&#9776;";*/
             });
         });
     }
+});
+document.getElementById("about-btn").addEventListener("click", () => {
+    document.getElementById("about-me").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+});
+
+document.querySelector(".cert-card").addEventListener("click",()=>{
+    window.location.href="certificate-view.html";
 });
