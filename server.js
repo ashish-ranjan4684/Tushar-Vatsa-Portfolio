@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const redis = require("redis");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
+const {sendEmail} = require("./scripts/sendEmail");
 
 require("dotenv").config();
 
@@ -138,6 +139,19 @@ app.get("/talk",async(req,res)=>{
         }
     }
 });
+
+app.post("/send-message",async(req, res)=>{
+    let obj = req.body;
+    console.log(obj);
+
+    try{
+        await sendEmail(process.env.SMTP_USER, process.env.SMTP_PASSWORD, "notification", "You received a message", process.env.RECEIVER_EMAIL,obj);
+        res.status(200).send("email sent successfully.");
+    }catch(err){
+        console.log(err);
+        res.status(500).send("could not send email");
+    }
+})
 
 wss.on("connection",async(ws,req)=>{
     console.log("A client connected");

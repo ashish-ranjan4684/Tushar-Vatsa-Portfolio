@@ -12,7 +12,7 @@
 <body>
     
     <div class="navbar">
-        <div class="title"><img src="LOGO3 3rem.png" alt="logo" class="title-logo"> Tushar Vatsa</div>
+        <div class="title"><img src="LOGO3 3rem.png" alt="logo" class="title-logo"><span class="title-text">Tushar Vatsa</span> </div>
 
         <div class="hamburger" id="hamburger">
             <svg class="hamburger-svg" viewBox="0 0 100 100">
@@ -23,18 +23,18 @@
         </div>
 
         <div class="menu" id="menu">
-            <span class="menuitem" id="about-btn">About</span>
-            <span class="menuitem">Experience</span>
-            <span class="menuitem">Projects</span>
-            <span class="menuitem">Skills</span>
-            <span class="menuitem">Contact Me</span>
+            <span class="menuitem" id="about-btn" data-section="about-me">About</span>
+            <span class="menuitem" data-section="experience-me">Experience</span>
+            <span class="menuitem" data-section="projects-me">Projects</span>
+            <span class="menuitem" data-section="skills-me">Skills</span>
+            <span class="menuitem" data-section="contact-me">Contact Me</span>
             <div class="menuitem" id="resume-btn">Resume <img src="download2.png" alt="" height="24px" width="24px"></div>
             <span class="menuitem talk">Let's Talk</span>
         </div>
     </div>
 
     <div class="about">
-        <div class="about-super-container">
+        <div class="about-super-container section">
             <div class="hero-image-container">
                 <img src="Tushar400.png" alt="Tushar Vatsa Image" class="hero-image">
             </div>
@@ -61,9 +61,10 @@
                 <div class="carousel-item">C/C++</div><div class="carousel-item">Node.js</div><div class="carousel-item">Python</div><div class="carousel-item">React.js</div><div class="carousel-item">LLM orchestration</div><div class="carousel-item">Langchain</div><div class="carousel-item">Langraph</div><div class="carousel-item">Huggingface</div><div class="carousel-item">Ollama</div><div class="carousel-item">Tensorflow</div><div class="carousel-item">Pytorch</div><div class="carousel-item">Fastapi</div><div class="carousel-item">Matplotlib</div><div class="carousel-item">Seaborn</div><div class="carousel-item">Plotly.js</div><div class="carousel-item">Numpy</div><div class="carousel-item">Pandas</div><div class="carousel-item">Puppeteer</div>
             </div>
         </div>
-        <div class="about-section-container" id="about-me">
+        <div class="about-section-container section" id="about-me">
             <div class="about-section-title">
-                <div class="about-section-heading">Engineer With <span class="gradient">Imagination</span> </div><div class="about-section-subheading">I am a curious and creative individual who enjoys exploring ideas from different perspectives and turning them into meaningful solutions. Beyond technology, I find inspiration in sports, music, and painting, which help me stay disciplined, expressive, and innovative. I enjoy learning how things work, solving challenging problems, and continuously pushing myself to grow both personally and professionally. Whether building projects or pursuing hobbies, I approach everything with curiosity, creativity, and dedication.</div>
+                <div class="about-section-heading">Engineer With <span class="gradient">Imagination</span> </div>
+                <div class="about-section-subheading">I am a curious and creative individual who enjoys exploring ideas from different perspectives and turning them into meaningful solutions. Beyond technology, I find inspiration in sports, music, and painting, which help me stay disciplined, expressive, and innovative. I enjoy learning how things work, solving challenging problems, and continuously pushing myself to grow both personally and professionally. Whether building projects or pursuing hobbies, I approach everything with curiosity, creativity, and dedication.</div>
             </div>
             <div class="about-section-description">
                 <div class="education-card">
@@ -161,6 +162,60 @@
             </div>
             
         </div>
+        <div class="contact-section-container section" id="contact-me">
+            <div class="contact-section-title">
+                <div class="contact-section-heading">Up for a <span class="gradient">Talk ?</span> </div>
+                <div class="contact-section-subheading about-section-subheading">Be it queries for hiring, brainstorming new ideas or just a casual convo, I am always up for a nice little chat!
+            </div>
+            <div class="contact-section-description">
+                <div class="option1">
+                    <div class="button contact-options email">
+                        <img  src="email.png" alt="email" width="32px" height="32px">
+                        <div class="contact-options-inside">
+                            <div class="contact-options-inside-heading">Email</div>
+                            <div class="contact-options-inside-description">tushar@gmail.com</div>
+                        </div>
+                    </div>
+                    <div class="button contact-options linkedin">
+                        <img src="linkedin lined.png" alt="linkedin" width="32px" height="32px">
+                        <div class="contact-options-inside">
+                            <div class="contact-options-inside-heading">Linkedin</div>
+                            <div class="contact-options-inside-description">Connect with me</div>
+                        </div>
+                    </div>
+                    <div class="button contact-options instagram">
+                        <img src="insta.png" alt="instagram" width="32px" height="32px">
+                        <div class="contact-options-inside">
+                            <div class="contact-options-inside-heading">Instagram</div>
+                            <div class="contact-options-inside-description">Up for a casual chat ?</div>
+                        </div>
+                    </div>
+                    <div class="button contact-options facebook">
+                        <img src="facebook lined.png" alt="facebook" width="32px" height="32px">
+                        <div class="contact-options-inside">
+                            <div class="contact-options-inside-heading">Facebook</div>
+                            <div class="contact-options-inside-description">Find me on facebook</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="signup-form">
+                    <div class="signup-name form-internal">
+                        <input class="input-el" type="text" id="name" name="name" placeholder=" " required>
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="signup-org form-internal">
+                        <input class="input-el" type="text" id="org" name="org" placeholder=" ">
+                        <label for="org">Organization</label>
+                    </div>
+                    <div class="signup-email form-internal">
+                        <input class="input-el" type="email" id="email" name="email" placeholder=" " required>
+                        <label for="email">Email</label>
+                    </div>
+                    <textarea class="message form-internal" id="message-input" placeholder="Hi Tushar, I'd like to discuss..."></textarea>
+                    <div class="button message-send-btn">Send Message</div>
+                </div>
+            </div>
+        </div>
         <div class="down-arrow"><img src="down arrow.png" alt="" height="24px" width="24px"></div>
         <div class="footer">
             <div class="footer-line1">Made with &#10084;&#65039; by Tushar Vatsa.</div> <div class="footer-line2">&copy; 2026 Tushar Vatsa. All Rights Reserved.</div>
@@ -168,7 +223,7 @@
     </div>
 
     <div class="bot-button">Ask my Bot <img src="bot.png" alt="Bot" height="24px" width="24px"></div>
-        
+    <div class="progress-bar"></div>  
     <script type="module" src="home.js"></script>
 </body>
 </html>

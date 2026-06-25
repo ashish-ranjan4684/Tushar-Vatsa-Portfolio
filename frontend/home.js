@@ -5,7 +5,8 @@ let hamburger = document.getElementById("hamburger");
 let talkEl = document.querySelector(".talk");
 let menu = document.getElementById("menu");
 let carouselItems = document.querySelectorAll(".carousel-item");
-
+let menuItems = document.querySelectorAll(".menuitem");
+let sections = document.querySelectorAll(".section");
 /*carouselItems.forEach((item,index)=>{
     item.document.createElement("span").classList.add("blinking-dot");
 });*/
@@ -13,6 +14,41 @@ let carouselItems = document.querySelectorAll(".carousel-item");
 /*hamburger.addEventListener("click",()=>{
     menu.classList.toggle("active");
 });*/
+
+const about = document.querySelector(".about");
+const progress = document.querySelector(".progress-bar");
+
+about.addEventListener("scroll", () => {
+
+    const scrollTop = about.scrollTop;
+
+    const scrollableHeight =
+        about.scrollHeight - about.clientHeight;
+
+    const percent = scrollTop / scrollableHeight;
+
+    progress.style.transform = `scaleX(${percent}`;
+});
+
+//const menuItems = document.querySelectorAll(".menuitem");
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+
+            menuItems.forEach(item => item.classList.remove("menuitem-active"));
+
+            if(entry.target.id){
+                document.querySelector(`[data-section="${entry.target.id}"]`).classList.add("menuitem-active");
+            }
+        }
+    });
+}, {
+    root:document.querySelector(".about"),
+    threshold: 0.2
+});
+
+sections.forEach(section => observer.observe(section));
 
 talkEl.addEventListener("click",async()=>{
     window.location.href="/talk";
@@ -90,7 +126,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-document.getElementById("about-btn").addEventListener("click", () => {
+/*document.getElementById("about-btn").addEventListener("click", () => {
+    document.getElementById("about-me").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+});*/
+
+document.querySelector(".down-arrow").addEventListener("click", () => {
     document.getElementById("about-me").scrollIntoView({
         behavior: "smooth",
         block: "start"
@@ -99,4 +142,64 @@ document.getElementById("about-btn").addEventListener("click", () => {
 
 document.querySelector(".cert-card").addEventListener("click",()=>{
     window.location.href="certificate-view.html";
+});
+
+menuItems.forEach((el,index)=>{
+    el.addEventListener("click",(event)=>{
+        let targetElId = event.target.getAttribute("data-section");
+        console.log(targetElId);
+        document.getElementById(targetElId).scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+    });
+    
+});
+
+document.querySelectorAll(".contact-options").forEach(el=>{
+    el.addEventListener("click",(event)=>{
+        if(el.classList.contains("facebook")){
+            window.location.href="https://www.facebook.com/profile.php?id=100010094403883";
+        }else if(el.classList.contains("instagram")){
+            window.location.href="https://www.instagram.com/vatsa_tushar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==";
+        }else if(el.classList.contains("linkedin")){
+            window.location.href="https://www.linkedin.com/in/tushar9145/";
+        }else if(el.classList.contains("email")){
+            window.location.href="mailto:vatsatushar3@gmail.com";
+        }else{
+            console.log("ullu");
+        }
+    });
+    
+});
+
+document.querySelector(".message-send-btn").addEventListener("click",async(event)=>{
+    let emailEl = document.querySelector(`#email`);
+    let nameEl = document.querySelector(`#name`);
+    let orgEl = document.querySelector(`#org`);
+    let messageEl = document.querySelector(`#message-input`);
+
+    let result = await fetch("/send-message",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            name: nameEl.value,
+            email: emailEl.value,
+            org: orgEl.value,
+            message: messageEl.value
+        })
+    });
+
+    nameEl.value = "";
+    messageEl.value = "";
+    emailEl.value = "";
+    orgEl.value = "";
+
+    if(result.status===200){
+        console.log("message sent successfully");
+    }else{
+        console.log("Message could not be sent.")
+    }
 });

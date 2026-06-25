@@ -6,6 +6,17 @@
     color-scheme: dark;
 }
 
+:root{
+    --active-dot:rgb(75, 255, 47);
+    --section-heading-font:2.5rem;
+    --section-heading-gradient: linear-gradient(to right,aqua,rgb(0, 98, 255));
+    --section-subheading-color:rgb(195, 193, 193);
+    --section-subheading-font:1.2rem;
+    --section-subheading-font-mobile:0.9rem;
+    --cyan:#00e5ff;
+    --bright-cyan:#00ffcc;
+}
+
 @keyframes autoShowx{
     from{
         opacity:0;
@@ -54,10 +65,24 @@
 body {
     background-color: #000000;
     color: white;
-    /*position: relative;*/
+    position: relative;
     font-family: "Roboto", sans-serif;
     min-height: 100vh;
+    overflow: hidden;
     overflow-x: hidden; /* Prevents any accidental horizontal scrolling */
+}
+
+.progress-bar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:4px;
+
+    background:var(--section-heading-gradient);
+    transform-origin:left;
+    transform:scaleX(0);
+    z-index:10001;
 }
 
 /* --- View Transitions --- */
@@ -101,7 +126,7 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(var(--angle), aqua, rgb(201, 87, 21));
+    background-image: linear-gradient(var(--angle), aqua, rgb(21, 87, 201));
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
@@ -144,6 +169,10 @@ body {
     transition: background 0.3s ease;
 }
 
+.menuitem-active{
+    border-bottom: 4px solid var(--bright-cyan);
+}
+
 .menuitem:hover {
     background: linear-gradient(to right, rgb(118, 116, 116), rgb(91, 85, 85));
     cursor: pointer;
@@ -177,7 +206,8 @@ body {
 
 .about-super-container {
     width: 100%;
-    height:100%;
+    min-height:100vh;
+    /*height:fit-content;*/
     /*max-width: 1200px;*/
     display: flex;
     flex-direction: row;
@@ -363,7 +393,7 @@ body {
     display: flex;
     flex-direction: row;
     padding-bottom:1rem;
-    padding-top:2rem;
+    padding-top:1rem;
     font-weight: 300;
     color: rgb(195, 193, 193);
     mask-image: linear-gradient(to right, transparent 3%, black 7%, black 93%, transparent 97%);
@@ -417,12 +447,12 @@ body {
     }
 }
 
-.about-section-container{
+.contact-section-container, .about-section-container{
     display:flex;
     flex-direction:column;
     align-items: center;
 }
-.about-section-title{
+.contact-section-title, .about-section-title{
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -431,12 +461,12 @@ body {
     animation-range:10% 50%;
 
 }
-.about-section-heading{
+.contact-section-heading, .about-section-heading{
     font-size: 2.5rem;
     text-align: center;
     padding:2rem;
     width:100%;
-
+    font-weight:700;
 }
 .gradient{
     background-image: linear-gradient(to right,aqua,rgb(0, 98, 255));
@@ -444,7 +474,7 @@ body {
     color:transparent;
 }
 
-#about-me{
+#contact-me, #about-me{
     scroll-margin-top: 2rem;
 }
 
@@ -723,12 +753,164 @@ Certification card ends
     grid-column: 1/4;
 }
 
+/*
+======================================================
+Contact form
+======================================================
+*/
+.signup-form{
+    display:flex;
+    flex-direction: column;
+    row-gap:1.5rem;
+    width:100%;
+}
+
+.form-internal{
+    position:relative;
+    /*border: 2px solid white;
+    border-radius: 0.5rem;*/
+}
+
+/*.form-internal:focus-within{
+    border-color: aqua;
+}*/
+
+.contact-section-description{
+    display:grid;
+    width:100%;
+    padding:1rem;
+    grid-template-columns: 2fr 3fr;
+    gap:1rem;
+    animation: autoShowx both;
+    animation-timeline: view();
+    animation-range:10% 50%;
+    max-width: none;;
+}
+
+.option1{
+    display:flex;
+    flex-direction: column;
+    gap:1.5rem;
+}
+
+.contact-options{
+    display:flex;
+    flex-direction: row;
+    column-gap: 1.5rem;
+    padding:1rem;
+    transition:transform 0.3s ease-in-out;
+    border:none;
+    height:fit-content;
+    justify-content: flex-start;
+    width:100%;
+    
+}
+
+.contact-options:hover{
+    transform: translateY(-10%);
+    background:transparent;
+}
+
+.contact-options img{
+    align-self:center;
+}
+
+.contact-options-inside{
+    display:flex;
+    flex-direction: column;
+
+}
+.contact-options-inside-heading{
+    color:var(--section-subheading-color);
+}
+
+.input-el, input{
+    padding:0.5rem 1rem;
+    border-radius: 0.5rem;
+    border:1px solid rgb(71, 70, 70);
+    background-color: transparent;
+    color:white;
+    height:2.5rem;
+    font-size: 1rem;
+    width:100%;
+    outline:none;
+    border-radius: 0.5rem;
+    border:transparent;
+}
+
+.input-el:focus-within{
+    border: 2px solid var(--bright-cyan);
+    
+}
+
+label{
+    position:absolute;
+    top:0.6rem;
+    left:1rem;
+    color:rgb(195, 210, 210);
+    pointer-events: none;
+    transition: all 0.2s ease
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+top: -0.6rem;
+left: 0.8rem;
+font-size: 0.75rem;
+background-color: rgb(37, 35, 35);
+padding: 0 0.3rem;
+color: aqua;
+}
+
+#message-input{
+    display:block;
+    width:100%;
+    max-width: 100%;
+    height:8rem;
+    padding:1rem;
+    font-size: 1rem;
+    outline:none;
+    border-radius: 0.5rem;
+    background: transparent;
+    font:inherit;
+    line-height: 1.5rem;
+    resize:none;
+    border:transparent;
+    /*border:2px solid rgb(63, 63, 63);*/
+
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    scrollbar-color: aquamarine transparent;
+}
+textarea::placeholder{
+    color: rgb(178,176,176);
+    font-family: inherit;
+    font-size: inherit;
+    opacity: 1;
+}
+
+
+#message-input:focus{
+        border:2px solid var(--bright-cyan);
+    
+}
+
+#message-input:empty::before{
+    content: "Type your message here...";
+    color:rgb(178, 176, 176);
+}
+
+
 
 /* ==========================================================================
    MEDIA QUERIES (Mobile and Tablets Scaling Optimization)
    ========================================================================== */
 
-@media (max-width: 900px) {
+@media (max-width: 1210px) {
     /* Vertical Transition Tweaks */
     @keyframes view-transition-old { to { transform: translateY(-100%); } }
     @keyframes view-transition-new { from { transform: translateY(100%); } }
@@ -747,8 +929,8 @@ Certification card ends
         border: none;
         cursor: pointer;
         padding: 0;
-        width: 80px;
-        height: 40px;
+        width: 50px;
+        height: 30px;
         outline: none;
         -webkit-tap-highlight-color: transparent;
     }
@@ -837,7 +1019,7 @@ Certification card ends
     .about-super-container {
         flex-direction: column;
         text-align: center;
-        height:100%;
+        min-height:100%;
         gap: 1rem;
     }
 
@@ -885,6 +1067,7 @@ Certification card ends
     }
     .cert-card{
         grid-column: 1/4;
+        max-width: none;
     }
     .school10, .school12{
         grid-column: 1/5;
@@ -893,7 +1076,13 @@ Certification card ends
 
 /* Optimization for tiny displays (e.g. iPhone SE / smaller mobile) */
 @media (max-width: 500px) {
+    .progress-bar{
+        height:2px;
+    }
     .down-arrow{
+        display:none;
+    }
+    .title-text{
         display:none;
     }
     .carousel{
@@ -922,5 +1111,29 @@ Certification card ends
         height:2rem;
         width:2rem;
 
+    }
+    .contact-section-description{
+        grid-template-columns: 1fr;
+    }
+    .contact-options-inside{
+        display:none;
+    }
+    .contact-options{
+        border-radius:50%;
+        width:fit-content;
+        
+
+    }
+    .option1{
+        flex-direction: row;
+        gap:0.5rem;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 900px){
+    .down-arrow{
+        bottom:1rem;
     }
 }
